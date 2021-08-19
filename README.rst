@@ -3,16 +3,16 @@ Build distributed Java applications with Ray
 .. image:: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
 
 .. image:: https://readthedocs.org/projects/ray/badge/?version=master
-    :target: http://docs.ray.io/en/master/?badge=master
+:target: http://docs.ray.io/en/master/?badge=master
 
 .. image:: https://img.shields.io/badge/Ray-Join%20Slack-blue
-    :target: https://forms.gle/9TSdDYUgxYs8SA9e8
+:target: https://forms.gle/9TSdDYUgxYs8SA9e8
 
 .. image:: https://img.shields.io/badge/Discuss-Ask%20Questions-blue
-    :target: https://discuss.ray.io/
-    
+:target: https://discuss.ray.io/
+
 .. image:: https://img.shields.io/twitter/follow/raydistributed.svg?style=social&logo=twitter
-    :target: https://twitter.com/raydistributed
+:target: https://twitter.com/raydistributed
 
 |
 
@@ -163,8 +163,8 @@ RLlib Quick Start
 
 .. code-block:: bash
 
-  pip install tensorflow  # or tensorflow-gpu
-  pip install "ray[rllib]"
+pip install tensorflow  # or tensorflow-gpu
+pip install "ray[rllib]"
 
 .. code-block:: python
 
@@ -205,7 +205,7 @@ Ray Serve Quick Start
 ---------------------
 
 .. image:: https://raw.githubusercontent.com/ray-project/ray/master/doc/source/serve/logo.svg
-  :width: 400
+:width: 400
 
 `Ray Serve`_ is a scalable model-serving library built on Ray. It is:
 
@@ -319,3 +319,4 @@ Getting Involved
 .. _`Meetup Group`: https://www.meetup.com/Bay-Area-Ray-Meetup/
 .. _`Twitter`: https://twitter.com/raydistributed
 .. _`Slack`: https://forms.gle/9TSdDYUgxYs8SA9e8
+
