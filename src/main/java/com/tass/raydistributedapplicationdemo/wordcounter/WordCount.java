@@ -26,6 +26,12 @@ public class WordCount {
         counts.put(word, counts.getOrDefault(word, 0) + 1);
       }
     }
+    try {
+      System.out.println("|| Sleep: " + fileName);
+      Thread.sleep(10000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     return counts;
   }
 

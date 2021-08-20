@@ -29,11 +29,12 @@ public class DistributedWordCount {
         }
         // Synchronously get all the results.
         List<Map<String, Integer>> results = Ray.get(objectRefs);
-        Ray.get(objectRefs).forEach(counts -> {
-            counts.forEach((word, count) -> {
-                totalCounts.put(word, totalCounts.getOrDefault(word, 0) + count);
-            });
-        });
+        Ray.get(objectRefs)
+                .forEach(counts -> {
+                    counts.forEach((word, count) -> {
+                        totalCounts.put(word, totalCounts.getOrDefault(word, 0) + count);
+                    });
+                });
         // Print the top 10 most frequent words in all files.
         totalCounts.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))

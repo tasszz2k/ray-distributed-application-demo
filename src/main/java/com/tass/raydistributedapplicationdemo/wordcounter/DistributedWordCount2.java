@@ -44,7 +44,7 @@ public class DistributedWordCount2 {
         }
 
         /**
-         * Get the top N words and their counts Paging.
+         * Get the top N words and their counts by page.
          */
         public Map<String, Integer> getInRange(int skip, int limit) {
             return totalCounts.entrySet().stream()
