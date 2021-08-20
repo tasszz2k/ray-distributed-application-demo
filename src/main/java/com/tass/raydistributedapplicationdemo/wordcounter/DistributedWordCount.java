@@ -38,7 +38,7 @@ public class DistributedWordCount {
         totalCounts.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .limit(10).forEach(entry -> {
-                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                    System.out.println("- " + entry.getKey() + ": " + entry.getValue());
                 });
     }
 }

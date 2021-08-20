@@ -19,6 +19,7 @@ public class WordCount {
    * Count the occurrence of each word in a file.
    */
   public static Map<String, Integer> countWordsInFile(String fileName) throws IOException {
+    System.out.println(">> filename: " + fileName);
     Map<String, Integer> counts = new HashMap<>();
     for (String line : Files.readAllLines(Paths.get(fileName), Charset.defaultCharset())) {
       for (String word : line.split("\\s+")) {

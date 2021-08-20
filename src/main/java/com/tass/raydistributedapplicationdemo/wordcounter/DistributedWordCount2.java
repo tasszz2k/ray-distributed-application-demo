@@ -39,7 +39,19 @@ public class DistributedWordCount2 {
         public Map<String, Integer> getTopN(int n) {
             return totalCounts.entrySet().stream()
                     .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                    .limit(n).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                    .limit(n)
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        }
+
+        /**
+         * Get the top N words and their counts Paging.
+         */
+        public Map<String, Integer> getInRange(int skip, int limit) {
+            return totalCounts.entrySet().stream()
+                    .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                    .skip(skip)
+                    .limit(limit)
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         }
     }
 
@@ -64,6 +76,8 @@ public class DistributedWordCount2 {
             Ray.task(DistributedWordCount2::countWordsInFileAndUpdateCounter,
                     "files/" + i + ".txt", counter).remote();
         }
+        int skip = 0;
+        int limit = 10;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         do {
             System.out.println("Press enter to query current top 10 words, press q to quit:");
@@ -71,7 +85,8 @@ public class DistributedWordCount2 {
             if (input.equals("q")) {
                 break;
             } else {
-                ObjectRef<Map<String, Integer>> top10Words = counter.task(Counter::getTopN, 10).remote();
+//                ObjectRef<Map<String, Integer>> top10Words = counter.task(Counter::getTopN, 10).remote();
+                ObjectRef<Map<String, Integer>> top10Words = counter.task(Counter::getInRange, skip += limit, limit).remote();
                 System.out.println(top10Words.get());
             }
         } while (true);
