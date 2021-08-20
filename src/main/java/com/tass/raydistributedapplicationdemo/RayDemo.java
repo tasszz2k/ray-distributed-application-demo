@@ -1,3 +1,5 @@
+package com.tass.raydistributedapplicationdemo;
+
 import io.ray.api.ActorHandle;
 import io.ray.api.ObjectRef;
 import io.ray.api.Ray;
@@ -25,7 +27,12 @@ public class RayDemo {
     }
 
     public static void main(String[] args) {
-        // Intialize Ray runtime.
+
+        // Config Driver Options
+        System.setProperty("ray.address", "172.16.30.163:6379");
+        System.setProperty("ray.local-mode", "true");
+
+        // Initialize Ray runtime.
         Ray.init();
         {
             List<ObjectRef<Integer>> objectRefList = new ArrayList<>();
@@ -57,5 +64,6 @@ public class RayDemo {
                     .collect(Collectors.toList());
             System.out.println(Ray.get(objectRefList));  // [1, 1, 1, 1]
         }
+        System.out.println("=============================");
     }
 }
